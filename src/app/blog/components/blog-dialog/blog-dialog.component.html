@@ -1,0 +1,35 @@
+<h2>Add new blog</h2>
+
+<form [formGroup]="blogForm">
+
+  <mat-form-field>
+    <input
+      matInput
+      data-cy="blog-title"
+      placeholder="Title"
+      formControlName="title"
+    />
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <input
+      matInput
+      data-cy="blog-desc"
+      placeholder="Desc"
+      formControlName="desc"
+    />
+  </mat-form-field>
+
+  <div class="controls">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!blogForm.valid || inProgress"
+      (click)="submit()"
+    >
+      {{ submitText }}
+    </button>
+    <button mat-raised-button color="accent" (click)="cancel()">Cancel</button>
+  </div>
+</form>

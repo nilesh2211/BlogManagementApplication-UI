@@ -1,0 +1,51 @@
+<mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+    <mat-cell *matCellDef="let blog"> {{ blog.id }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="pull-right"
+      >Actions</mat-header-cell
+    >
+    <mat-cell *matCellDef="let blog" class="pull-right actions">
+      <button mat-icon-button color="primary" matTooltip="Delete">
+        <mat-icon
+          svgIcon="remove"
+          (click)="confirmDelete(blog.id)"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button color="primary" matTooltip="Edit">
+        <mat-icon svgIcon="edit" (click)="edit(blog)"></mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="created">
+    <mat-header-cell *matHeaderCellDef class="pd-right-10">
+      Created Date
+    </mat-header-cell>
+    <mat-cell data-cy="et-date" *matCellDef="let blog" class="pd-right-10">
+      {{ blog.created | date: "dd/MM/yyyy" }}
+    </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+    <mat-cell data-cy="et-title" *matCellDef="let blog">
+      {{ blog.title }}
+    </mat-cell>
+  </ng-container>
+
+  
+  <ng-container matColumnDef="desc">
+    <mat-header-cell *matHeaderCellDef> Desc </mat-header-cell>
+    <mat-cell data-cy="et-desc" *matCellDef="let blog">
+      {{ blog.desc }}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

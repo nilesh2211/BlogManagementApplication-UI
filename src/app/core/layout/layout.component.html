@@ -1,0 +1,7 @@
+<div class="layout-content">
+  <mat-toolbar color="primary">
+    <span> Hello {{ userName$ | async }}</span>
+    <span class="right btn" (click)="logout()">Logout</span>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</div>
